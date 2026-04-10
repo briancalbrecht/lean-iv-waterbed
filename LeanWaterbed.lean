@@ -8,3 +8,4 @@ import LeanWaterbed.Case3
 import LeanWaterbed.Case4
 import LeanWaterbed.Case4DPos
 import LeanWaterbed.MFCQ
+import LeanWaterbed.Vacuity
