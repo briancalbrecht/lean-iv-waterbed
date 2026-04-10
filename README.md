@@ -1,4 +1,4 @@
-# lean-waterbed
+# lean-iv-waterbed
 
 Lean 4 formalization of the proofs in "Consumer Harm from the Waterbed
 Effect: A Comment on Inderst and Valletti (2011)" by Brian C. Albrecht.
