@@ -76,17 +76,15 @@ open LeanWaterbed.Case4DPos
 open LeanWaterbed.CubicPositivity
 open LeanWaterbed.MFCQ
 
-/-- **Case exhaustion for the active-set analysis.**
+/-- **Propositional case split on two predicates.**
 
-At a KKT point in the strict waterbed regime, the active set of
-{g_S ≥ 0, g_L ≥ 0} is one of:
-  (a) both slack (μ_S = μ_L = 0)
-  (b) g_S binds, g_L slack (μ_S > 0, μ_L = 0)
-  (c) g_L binds, g_S slack (μ_S = 0, μ_L > 0)
-  (d) both bind (μ_S, μ_L > 0)
-
-This is a tautology on two propositions — we verify it mechanically
-so the README can remove "verified by inspection." -/
+For any two propositions P and Q, exactly one of the four
+combinations (P∧Q, P∧¬Q, ¬P∧Q, ¬P∧¬Q) holds. This is the
+propositional skeleton of the paper's case split on which of
+{g_S, g_L} bind. The theorem does not mention g_S or g_L — it
+verifies only that a by-cases argument on two propositions is
+exhaustive. The economic content lives in the four Case files,
+each of which handles one branch. -/
 theorem active_set_exhaustion (P Q : Prop) :
     (P ∧ Q) ∨ (P ∧ ¬Q) ∨ (¬P ∧ Q) ∨ (¬P ∧ ¬Q) := by
   by_cases hP : P <;> by_cases hQ : Q <;> simp [*]
