@@ -76,6 +76,16 @@ active_set_exhaustion :
 iv12_fails_at_kkt_upper_bound :
   ∀ (ξ yS : ℝ), 1 / 4 < yS → yS < 1 / 2 → ξ * (3 - 4 * yS) ≤ 1 →
     ξ * (1 + yS) ≤ 2 * yS * (2 - yS)
+
+eta_zero_improving_direction :
+  ∀ (ξ : ℝ), 0 < ξ → ξ < 1 →
+    ((ξ - 1) * (-1 / (1 - ξ)) - ξ > 0) ∧
+      ((1 / 2 - ξ) * (-1 / (1 - ξ)) + (1 / 2 + ξ) > 0)
+
+cs_derivative_iff_iv12 :
+  ∀ (ξ yS : ℝ), 0 < yS →
+    (-(2 - yS) / 3 + (1 + yS) * ξ / (6 * yS) > 0 ↔
+     ξ > 2 * yS * (2 - yS) / (1 + yS))
 ```
 
 </details>
@@ -99,6 +109,8 @@ case4_D_pos                    [propext, Classical.choice, Quot.sound]
 mfcq_slackening_direction      [propext, Classical.choice, Quot.sound]
 active_set_exhaustion           [propext, Classical.choice, Quot.sound]
 iv12_fails_at_kkt_upper_bound  [propext, Classical.choice, Quot.sound]
+eta_zero_improving_direction   [propext, Classical.choice, Quot.sound]
+cs_derivative_iff_iv12         [propext, Classical.choice, Quot.sound]
 ```
 
 No `sorryAx` anywhere. Every proof is complete.
@@ -108,7 +120,7 @@ No `sorryAx` anywhere. Every proof is complete.
 To reproduce locally:
 
 ```bash
-lake build    # builds everything; all 15 theorems must compile
+lake build    # builds everything; all 17 theorems must compile
 ```
 
 ## Coverage
@@ -131,6 +143,8 @@ Paper source: `comment/comment.tex` in the
 | Theorem 1: Case 4 sub-claim D > 0 | `thm:vacuous` | `Case4DPos.lean` | `case4_D_pos` | 686–714 |
 | Theorem 1: Case 4 (both bind) | `thm:vacuous` | `Case4.lean` | `case4_iv_fails` | 717–733 |
 | Corollary 1: MFCQ direction | `cor:local-max` | `MFCQ.lean` | `mfcq_slackening_direction` | 740–769 |
+| Corollary 2: η = 0 is improvable | `cor:equilibrium` | `BoundaryDirection.lean` | `eta_zero_improving_direction` | 498–522 |
+| CS derivative ≡ IV (12) | setup derivation | `CSDerivativeEquivalence.lean` | `cs_derivative_iff_iv12` | 258–264 |
 | Case exhaustion + master | `thm:vacuous` | `Vacuity.lean` | `active_set_exhaustion`, `iv12_fails_at_kkt_upper_bound` | 502–738 |
 
 Each file also contains a **negative control** — an existential witness
