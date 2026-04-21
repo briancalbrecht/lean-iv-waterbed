@@ -8,8 +8,8 @@ import LeanWaterbed.CubicPositivity
 /-!
 # Waterbed — Theorem 1 Case 3: only PC_L binds
 
-Source: `/Users/brian_icle/Documents/GitHub/waterbed/comment/comment.tex`,
-proof of Theorem 1 (`thm:vacuous`), Case 3 (lines 611–636).
+Source: `comment.tex`,
+proof of Theorem 1 (`thm:vacuous`), Case 3.
 
 ## Paper argument (informal)
 
@@ -27,7 +27,7 @@ open LeanWaterbed.CubicPositivity
 
 /-- **Case 3: KKT forces ξ = 1/(3−4yS); IV condition (12) fails.**
 
-Source: `comment.tex` lines 611–636, Case 3 of Theorem 1. -/
+Source: `comment.tex`, Case 3 of Theorem 1. -/
 theorem case3_iv_fails
     (ξ yS : ℝ)
     (hyS_lo : 1 / 4 < yS) (hyS_hi : yS < 1 / 2)

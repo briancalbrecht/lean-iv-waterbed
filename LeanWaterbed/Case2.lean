@@ -6,8 +6,8 @@ import Mathlib.Algebra.Order.Field.Basic
 /-!
 # Waterbed — Theorem 1 Case 2: KKT candidate infeasible
 
-Source: `/Users/brian_icle/Documents/GitHub/waterbed/comment/comment.tex`,
-proof of Theorem 1 (`thm:vacuous`), Case 2 (lines 580–608).
+Source: `comment.tex`,
+proof of Theorem 1 (`thm:vacuous`), Case 2.
 
 ## Paper argument (informal)
 
@@ -23,7 +23,7 @@ namespace LeanWaterbed.Case2
 /-- **Case 2: KKT candidate is infeasible.** On `(1/4, 1/2)`,
 `8 y_S² + 2 y_S − 3 < 0`.
 
-Source: `comment.tex` lines 580–608, Case 2 of Theorem 1. -/
+Source: `comment.tex`, Case 2 of Theorem 1. -/
 theorem case2_infeasible
     (yS : ℝ)
     (hyS_lo : 1/4 < yS) (hyS_hi : yS < 1/2) :

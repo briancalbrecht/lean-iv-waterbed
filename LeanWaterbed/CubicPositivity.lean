@@ -6,7 +6,7 @@ import Mathlib.Algebra.Order.Field.Basic
 /-!
 # Waterbed — Cubic positivity sub-lemma
 
-Source: `/Users/brian_icle/Documents/GitHub/waterbed/comment/comment.tex`,
+Source: `comment.tex`,
 proof of Theorem 1 (`thm:vacuous`), used in Cases 3 and 4 (line ~620).
 
 ## Paper argument (informal)

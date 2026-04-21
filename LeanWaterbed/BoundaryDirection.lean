@@ -7,7 +7,7 @@ import Mathlib.Algebra.Order.Field.Basic
 /-!
 # Waterbed — eta = 0 improving direction for equilibrium corollary
 
-Source: `/Users/brian_icle/Documents/GitHub/waterbed/comment/comment.tex`,
+Source: `comment.tex`,
 proof of Corollary `cor:equilibrium` (vacuity at asymmetric equilibria).
 
 At `η = 0` in the strict waterbed regime, the paper uses the direction

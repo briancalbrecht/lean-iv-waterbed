@@ -16,8 +16,8 @@ import LeanWaterbed.MFCQ
 /-!
 # Waterbed — Theorem 1 master: vacuity of IV condition (12) at KKT points
 
-Source: `/Users/brian_icle/Documents/GitHub/waterbed/comment/comment.tex`,
-Theorem 1 (`thm:vacuous`), lines 502–738.
+Source: `comment.tex`,
+Theorem 1 (`thm:vacuous`).
 
 ## Paper argument (structure)
 

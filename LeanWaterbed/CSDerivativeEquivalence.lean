@@ -9,7 +9,7 @@ import Mathlib.Algebra.Order.Field.Basic
 /-!
 # Waterbed comment — CS derivative equivalence with IV condition (12)
 
-Source: `comment/comment.tex`, lines 231–266.
+Source: `comment.tex`.
 
 Along the both-binding Hotelling path, dCS/dw_L > 0 if and only if
 IV condition (12) holds: ξ > 2·y_S·(2 − y_S) / (1 + y_S).
@@ -119,7 +119,7 @@ theorem iv12_of_cs_pos
 
 /-- The full equivalence: dCS/dwL > 0 iff IV condition (12).
 This is the algebraic core of the paper's equivalence derivation
-(comment.tex, lines 258–264). -/
+(comment.tex). -/
 theorem cs_derivative_iff_iv12
     (ξ yS : ℝ) (hyS0 : 0 < yS) :
     -(2 - yS) / 3 + (1 + yS) * ξ / (6 * yS) > 0 ↔

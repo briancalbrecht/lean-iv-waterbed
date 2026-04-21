@@ -7,8 +7,8 @@ import LeanWaterbed.CubicPositivity
 /-!
 # Waterbed — Theorem 1 Case 4: both PCs bind
 
-Source: `/Users/brian_icle/Documents/GitHub/waterbed/comment/comment.tex`,
-proof of Theorem 1 (`thm:vacuous`), Case 4 (lines 717–733).
+Source: `comment.tex`,
+proof of Theorem 1 (`thm:vacuous`), Case 4.
 
 ## Paper argument (informal)
 
@@ -25,7 +25,7 @@ open LeanWaterbed.CubicPositivity
 
 /-- **Case 4: both PCs bind; IV condition (12) fails.**
 
-Source: `comment.tex` lines 717–733, Case 4 of Theorem 1. -/
+Source: `comment.tex`, Case 4 of Theorem 1. -/
 theorem case4_iv_fails
     (ξ yS : ℝ)
     (hyS_lo : 1 / 4 < yS) (hyS_hi : yS < 1 / 2)

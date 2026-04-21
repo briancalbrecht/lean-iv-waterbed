@@ -7,8 +7,8 @@ import Mathlib.Algebra.Order.Field.Basic
 /-!
 # Waterbed — impossibility of IV condition (12) in the `n_L → ∞` limit
 
-Source: `/Users/brian_icle/Documents/GitHub/waterbed/comment/comment.tex`,
-proof of Proposition 6 in the `n_L → ∞` limit (lines 420–459).
+Source: `comment.tex`,
+proof of Proposition 6 in the `n_L → ∞` limit.
 
 ## Paper argument (informal)
 
@@ -50,7 +50,7 @@ model, the strict waterbed regime forces `0 < ξ < 1/2` and
 Formally, we prove the negation of IV (12) as the inequality
 `ξ ≤ 2 · y_S · (2 - y_S) / (1 + y_S)`.
 
-Source: `comment.tex` lines 420–459, `n_L → ∞` case of Proposition 6. -/
+Source: `comment.tex`, `n_L → ∞` case of Proposition 6. -/
 theorem iv_condition_12_fails_in_limit
     (ξ y_S : ℝ)
     (hξpos : 0 < ξ) (hξlt : ξ < 1 / 2)

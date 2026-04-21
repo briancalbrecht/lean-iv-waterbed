@@ -7,8 +7,8 @@ import Mathlib.Algebra.Order.Field.Basic
 /-!
 # Waterbed — Theorem 1 Case 4 sub-claim: D > 0
 
-Source: `/Users/brian_icle/Documents/GitHub/waterbed/comment/comment.tex`,
-proof of Theorem 1 (`thm:vacuous`), Case 4 D > 0 claim (lines 686–714).
+Source: `comment.tex`,
+proof of Theorem 1 (`thm:vacuous`), Case 4 D > 0 claim.
 
 ## Paper argument (informal)
 
@@ -22,7 +22,7 @@ namespace LeanWaterbed.Case4DPos
 
 /-- **Case 4 sub-claim: `4(2 y_S − 1)² > 0` on `(1/4, 1/2)`.**
 
-Source: `comment.tex` lines 686–714. -/
+Source: `comment.tex`. -/
 theorem case4_D_pos
     (yS : ℝ)
     (hyS_lo : 1/4 < yS) (hyS_hi : yS < 1/2) :

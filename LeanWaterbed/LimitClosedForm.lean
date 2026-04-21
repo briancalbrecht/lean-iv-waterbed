@@ -7,8 +7,8 @@ import Mathlib.Algebra.Order.Field.Basic
 /-!
 # Waterbed — Lemma 1: IV Proposition 5 closed form
 
-Source: `/Users/brian_icle/Documents/GitHub/waterbed/comment/comment.tex`,
-Lemma 1 (`lem:limit-closed-form`), lines 371–405.
+Source: `comment.tex`,
+Lemma 1 (`lem:limit-closed-form`).
 
 ## Paper argument (informal)
 
@@ -32,8 +32,6 @@ selection without naming the root explicitly:
 (b) **Boundary**: at `r = 3/8`, the unique root below 1 is `ξ = 1/2`.
 (c) **Infeasibility of the larger root**: any root `ξ ≥ 1` forces
     `y_S = (1 − ξ)/2 ≤ 0`.
-
-This closes the gap identified in `proofs/lean-findings.md`.
 -/
 
 namespace LeanWaterbed.LimitClosedForm
@@ -42,7 +40,7 @@ namespace LeanWaterbed.LimitClosedForm
 quadratic `ξ² − 2ξ + 2r = 0` with `0 < r < 3/8` and `ξ < 1`,
 then `0 < ξ < 1/2`.
 
-Source: `comment.tex` lines 385–389, Lemma 1. -/
+Source: `comment.tex`, Lemma 1. -/
 theorem smaller_root_feasibility
     (ξ r : ℝ)
     (hr_pos : 0 < r) (hr_hi : r < 3 / 8)
@@ -95,7 +93,7 @@ theorem boundary_unique
 quadratic with `r > 0` forces `y_S = (1 − ξ)/2 ≤ 0`, which is
 economically infeasible.
 
-Source: `comment.tex` lines 385–386, Lemma 1. -/
+Source: `comment.tex`, Lemma 1. -/
 theorem larger_root_infeasible
     (ξ r : ℝ)
     (hr_pos : 0 < r)
@@ -109,7 +107,7 @@ theorem larger_root_infeasible
 `η(2 + 2ξ − η) = 0` with `2 + 2ξ − η > 0` (economically relevant
 range), we conclude `η = 0`.
 
-Source: `comment.tex` lines 377–380, Lemma 1. -/
+Source: `comment.tex`, Lemma 1. -/
 theorem eta_zero_in_limit
     (η ξ : ℝ)
     (hfactor : η * (2 + 2 * ξ - η) = 0)

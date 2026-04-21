@@ -4,8 +4,8 @@ import Mathlib.Tactic.Linarith
 /-!
 # Waterbed — Theorem 1 Case 1: both PCs slack
 
-Source: `/Users/brian_icle/Documents/GitHub/waterbed/comment/comment.tex`,
-proof of Theorem 1 (`thm:vacuous`), Case 1 (lines 573–577).
+Source: `comment.tex`,
+proof of Theorem 1 (`thm:vacuous`), Case 1.
 
 ## Paper argument (informal)
 
@@ -21,7 +21,7 @@ namespace LeanWaterbed.Case1
 gradient equations `1/2 + η − ξ = 0` and `1/2 + ξ − η = 0` are
 simultaneously inconsistent.
 
-Source: `comment.tex` lines 573–577, Case 1 of Theorem 1. -/
+Source: `comment.tex`, Case 1 of Theorem 1. -/
 theorem case1_no_solution
     (ξ η : ℝ)
     (hξη : ξ > η) (hη : η ≥ 0) (hξ : ξ < 1) (hη' : η < 1) :

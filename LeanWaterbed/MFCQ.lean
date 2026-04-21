@@ -5,8 +5,8 @@ import Mathlib.Tactic.NormNum
 /-!
 # Waterbed — Corollary 1: MFCQ slackening direction d = (−1, −1)
 
-Source: `/Users/brian_icle/Documents/GitHub/waterbed/comment/comment.tex`,
-proof of Corollary 1 (`cor:local-max`), lines 740–769.
+Source: `comment.tex`,
+proof of Corollary 1 (`cor:local-max`).
 
 ## Paper argument (informal)
 
@@ -32,7 +32,7 @@ shares `y_S = (1 + η − ξ)/2` and `y_L = (1 + ξ − η)/2` both in
 `(0, 1)`, the direction `d = (−1, −1)` satisfies
 `2 y_S + ξ > 0` and `η + 2 y_L > 0`.
 
-Source: `comment.tex` lines 740–769, Corollary 1. -/
+Source: `comment.tex`, Corollary 1. -/
 theorem mfcq_slackening_direction
     (ξ η : ℝ)
     (hξ_pos : ξ > 0) (hη_pos : η > 0) (hξη : ξ > η)

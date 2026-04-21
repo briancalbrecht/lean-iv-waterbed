@@ -6,10 +6,10 @@ import Mathlib.Tactic.FieldSimp
 import Mathlib.Algebra.Order.Field.Basic
 
 /-!
-# Waterbed — boundary case η = 0 of Theorem 3 (thm:vacuous)
+# Waterbed — boundary case η = 0 of Theorem 1 (thm:vacuous)
 
-Source: `/Users/brian_icle/Documents/GitHub/waterbed/comment/comment.tex`,
-proof of Theorem 3 (`thm:vacuous`), boundary case η = 0 (lines 516–539).
+Source: `comment.tex`,
+proof of Theorem 1 (`thm:vacuous`), boundary case η = 0.
 
 ## Paper argument (informal)
 
@@ -59,7 +59,7 @@ and the stationarity-derived identity `β = ξ · μ_S − (1/2 + ξ)` with
 Formally we show `β < 0` where
 `β = ξ · ((1/2 − ξ) / (1 − ξ)) − (1/2 + ξ)`.
 
-Source: `comment.tex` lines 516–539, boundary case of Theorem 3. -/
+Source: `comment.tex`, boundary case of Theorem 1. -/
 theorem beta_neg_at_eta_zero
     (ξ : ℝ)
     (hξpos : 0 < ξ) (hξlt : ξ < 1) :

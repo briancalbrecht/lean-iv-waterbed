@@ -125,27 +125,27 @@ lake build    # builds everything; all 17 theorems must compile
 
 ## Coverage
 
-Paper source: `comment/comment.tex` in the
-[waterbed](https://github.com/briancalbrecht/waterbed) repository.
+Paper source: `comment.tex` in the companion paper "Consumer Harm from
+the Waterbed Effect: A Comment on Inderst and Valletti (2011)."
 
-| Paper claim | Label | Lean file | Theorem | Lines |
-|---|---|---|---|---|
-| Lemma 1: η = 0 in the limit | `lem:limit-closed-form` | `LimitClosedForm.lean` | `eta_zero_in_limit` | 377–380 |
-| Lemma 1: smaller root feasibility | `lem:limit-closed-form` | `LimitClosedForm.lean` | `smaller_root_feasibility` | 385–389 |
-| Lemma 1: boundary ξ = 1/2 at r = 3/8 | `lem:limit-closed-form` | `LimitClosedForm.lean` | `boundary_unique`, `boundary_root` | 389 |
-| Lemma 1: larger root infeasible | `lem:limit-closed-form` | `LimitClosedForm.lean` | `larger_root_infeasible` | 385–386 |
-| Proposition: IV (12) fails in limit | `prop:limit` | `Limit.lean` | `iv_condition_12_fails_in_limit` | 420–459 |
-| Theorem 1: boundary η = 0 | `thm:vacuous` | `BoundaryEta0.lean` | `beta_neg_at_eta_zero` | 516–539 |
-| Theorem 1: Case 1 (both slack) | `thm:vacuous` | `Case1.lean` | `case1_no_solution` | 573–577 |
-| Theorem 1: Case 2 (g_S binds) | `thm:vacuous` | `Case2.lean` | `case2_infeasible` | 580–608 |
-| Cubic sub-lemma: P(y_S) > 0 | `thm:vacuous` | `CubicPositivity.lean` | `cubic_positivity` | ~620 |
-| Theorem 1: Case 3 (g_L binds) | `thm:vacuous` | `Case3.lean` | `case3_iv_fails` | 611–636 |
-| Theorem 1: Case 4 sub-claim D > 0 | `thm:vacuous` | `Case4DPos.lean` | `case4_D_pos` | 686–714 |
-| Theorem 1: Case 4 (both bind) | `thm:vacuous` | `Case4.lean` | `case4_iv_fails` | 717–733 |
-| Corollary 1: MFCQ direction | `cor:local-max` | `MFCQ.lean` | `mfcq_slackening_direction` | 740–769 |
-| Corollary 2: η = 0 is improvable | `cor:equilibrium` | `BoundaryDirection.lean` | `eta_zero_improving_direction` | 498–522 |
-| CS derivative ≡ IV (12) | setup derivation | `CSDerivativeEquivalence.lean` | `cs_derivative_iff_iv12` | 258–264 |
-| Case exhaustion + master | `thm:vacuous` | `Vacuity.lean` | `active_set_exhaustion`, `iv12_fails_at_kkt_upper_bound` | 502–738 |
+| Paper claim | Label | Lean file | Theorem |
+|---|---|---|---|
+| Lemma 1: η = 0 in the limit | `lem:limit-closed-form` | `LimitClosedForm.lean` | `eta_zero_in_limit` |
+| Lemma 1: smaller root feasibility | `lem:limit-closed-form` | `LimitClosedForm.lean` | `smaller_root_feasibility` |
+| Lemma 1: boundary ξ = 1/2 at r = 3/8 | `lem:limit-closed-form` | `LimitClosedForm.lean` | `boundary_unique`, `boundary_root` |
+| Lemma 1: larger root infeasible | `lem:limit-closed-form` | `LimitClosedForm.lean` | `larger_root_infeasible` |
+| Proposition: IV (12) fails in limit | `prop:limit` | `Limit.lean` | `iv_condition_12_fails_in_limit` |
+| Theorem 1: boundary η = 0 | `thm:vacuous` | `BoundaryEta0.lean` | `beta_neg_at_eta_zero` |
+| Theorem 1: Case 1 (both slack) | `thm:vacuous` | `Case1.lean` | `case1_no_solution` |
+| Theorem 1: Case 2 (g_S binds) | `thm:vacuous` | `Case2.lean` | `case2_infeasible` |
+| Cubic sub-lemma: P(y_S) > 0 | `thm:vacuous` | `CubicPositivity.lean` | `cubic_positivity` |
+| Theorem 1: Case 3 (g_L binds) | `thm:vacuous` | `Case3.lean` | `case3_iv_fails` |
+| Theorem 1: Case 4 sub-claim D > 0 | `thm:vacuous` | `Case4DPos.lean` | `case4_D_pos` |
+| Theorem 1: Case 4 (both bind) | `thm:vacuous` | `Case4.lean` | `case4_iv_fails` |
+| Corollary 1: MFCQ direction | `cor:local-max` | `MFCQ.lean` | `mfcq_slackening_direction` |
+| Corollary 2: η = 0 is improvable | `cor:equilibrium` | `BoundaryDirection.lean` | `eta_zero_improving_direction` |
+| CS derivative ≡ IV (12) | setup derivation | `CSDerivativeEquivalence.lean` | `cs_derivative_iff_iv12` |
+| Case exhaustion + master | `thm:vacuous` | `Vacuity.lean` | `active_set_exhaustion`, `iv12_fails_at_kkt_upper_bound` |
 
 Each file also contains a **negative control** — an existential witness
 showing that dropping one hypothesis makes the conclusion fail. This
