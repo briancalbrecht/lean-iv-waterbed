@@ -60,6 +60,9 @@ case2_infeasible :
 cubic_positivity :
   ∀ (yS : ℝ), 1 / 4 < yS → yS < 1 / 2 → 8 * yS ^ 3 - 22 * yS ^ 2 + 11 * yS - 1 > 0
 
+cubic_nonneg :
+  ∀ (yS : ℝ), 1 / 4 < yS → yS < 1 / 2 → 8 * yS ^ 3 - 22 * yS ^ 2 + 11 * yS - 1 ≥ 0
+
 case3_iv_fails :
   ∀ (ξ yS : ℝ), 1 / 4 < yS → yS < 1 / 2 → ξ > 0 → ξ * (3 - 4 * yS) = 1 →
     ξ * (1 + yS) ≤ 2 * yS * (2 - yS)
@@ -84,15 +87,44 @@ iv12_fails_at_kkt_upper_bound :
   ∀ (ξ yS : ℝ), 1 / 4 < yS → yS < 1 / 2 → ξ * (3 - 4 * yS) ≤ 1 →
     ξ * (1 + yS) ≤ 2 * yS * (2 - yS)
 
+gS_directional_pos_at_eta_zero :
+  ∀ (ξ : ℝ), ξ < 1 → (ξ - 1) * (-1 / (1 - ξ)) - ξ > 0
+
+phi_directional_pos_at_eta_zero :
+  ∀ (ξ : ℝ), 0 < ξ → ξ < 1 → (1 / 2 - ξ) * (-1 / (1 - ξ)) + (1 / 2 + ξ) > 0
+
 eta_zero_improving_direction :
   ∀ (ξ : ℝ), 0 < ξ → ξ < 1 →
     ((ξ - 1) * (-1 / (1 - ξ)) - ξ > 0) ∧
       ((1 / 2 - ξ) * (-1 / (1 - ξ)) + (1 / 2 + ξ) > 0)
 
+dpS_formula :
+  ∀ (ξ yS : ℝ), yS ≠ 0 → 1 / 3 + 2 / 3 * (-ξ / (2 * yS)) = 1 / 3 - ξ / (3 * yS)
+
+dpL_formula :
+  ∀ (ξ yS : ℝ), yS ≠ 0 → 2 / 3 + 1 / 3 * (-ξ / (2 * yS)) = 2 / 3 - ξ / (6 * yS)
+
+dCS_dwL_identity :
+  ∀ (ξ yS : ℝ), yS ≠ 0 →
+    -(yS * (1 / 3 - ξ / (3 * yS)) + (1 - yS) * (2 / 3 - ξ / (6 * yS))) =
+    -(2 - yS) / 3 + (1 + yS) * ξ / (6 * yS)
+
+cs_pos_of_iv12 :
+  ∀ (ξ yS : ℝ), 0 < yS → ξ > 2 * yS * (2 - yS) / (1 + yS) →
+    -(2 - yS) / 3 + (1 + yS) * ξ / (6 * yS) > 0
+
+iv12_of_cs_pos :
+  ∀ (ξ yS : ℝ), 0 < yS → -(2 - yS) / 3 + (1 + yS) * ξ / (6 * yS) > 0 →
+    ξ > 2 * yS * (2 - yS) / (1 + yS)
+
 cs_derivative_iff_iv12 :
   ∀ (ξ yS : ℝ), 0 < yS →
     (-(2 - yS) / 3 + (1 + yS) * ξ / (6 * yS) > 0 ↔
      ξ > 2 * yS * (2 - yS) / (1 + yS))
+
+cs_equivalence_needs_yS_pos :
+  ¬∀ (ξ yS : ℝ), -(2 - yS) / 3 + (1 + yS) * ξ / (6 * yS) > 0 →
+    ξ > 2 * yS * (2 - yS) / (1 + yS)
 
 multiplier_S_identity :
   ∀ (ξ η μ_S μ_L : ℝ),
@@ -137,14 +169,23 @@ beta_neg_at_eta_zero           [propext, Classical.choice, Quot.sound]
 case1_no_solution              [propext, Classical.choice, Quot.sound]
 case2_infeasible               [propext, Classical.choice, Quot.sound]
 cubic_positivity               [propext, Classical.choice, Quot.sound]
+cubic_nonneg                   [propext, Classical.choice, Quot.sound]
 case3_iv_fails                 [propext, Classical.choice, Quot.sound]
 case4_iv_fails                 [propext, Classical.choice, Quot.sound]
 case4_D_pos                    [propext, Classical.choice, Quot.sound]
 mfcq_slackening_direction      [propext, Classical.choice, Quot.sound]
 active_set_exhaustion           [propext, Classical.choice, Quot.sound]
 iv12_fails_at_kkt_upper_bound  [propext, Classical.choice, Quot.sound]
+gS_directional_pos_at_eta_zero [propext, Classical.choice, Quot.sound]
+phi_directional_pos_at_eta_zero [propext, Classical.choice, Quot.sound]
 eta_zero_improving_direction   [propext, Classical.choice, Quot.sound]
+dpS_formula                    [propext, Classical.choice, Quot.sound]
+dpL_formula                    [propext, Classical.choice, Quot.sound]
+dCS_dwL_identity               [propext, Classical.choice, Quot.sound]
+cs_pos_of_iv12                 [propext, Classical.choice, Quot.sound]
+iv12_of_cs_pos                 [propext, Classical.choice, Quot.sound]
 cs_derivative_iff_iv12         [propext, Classical.choice, Quot.sound]
+cs_equivalence_needs_yS_pos    [propext, Classical.choice, Quot.sound]
 multiplier_S_identity          [propext, Classical.choice, Quot.sound]
 multiplier_L_identity          [propext, Classical.choice, Quot.sound]
 theorem1_vacuous               [propext, Classical.choice, Quot.sound]
@@ -157,7 +198,7 @@ No `sorryAx` anywhere. Every proof is complete.
 To reproduce locally:
 
 ```bash
-lake build    # builds everything; all 21 theorems must compile
+lake build    # builds everything; all 30 theorems must compile
 ```
 
 ## Coverage
@@ -175,13 +216,21 @@ the Waterbed Effect: A Comment on Inderst and Valletti (2011)."
 | Theorem 1: boundary η = 0 | `thm:vacuous` | `BoundaryEta0.lean` | `beta_neg_at_eta_zero` |
 | Theorem 1: Case 1 (both slack) | `thm:vacuous` | `Case1.lean` | `case1_no_solution` |
 | Theorem 1: Case 2 (g_S binds) | `thm:vacuous` | `Case2.lean` | `case2_infeasible` |
-| Cubic sub-lemma: P(y_S) > 0 | `thm:vacuous` | `CubicPositivity.lean` | `cubic_positivity` |
+| Cubic sub-lemma: P(y_S) > 0 | `thm:vacuous` | `CubicPositivity.lean` | `cubic_positivity`, `cubic_nonneg` |
 | Theorem 1: Case 3 (g_L binds) | `thm:vacuous` | `Case3.lean` | `case3_iv_fails` |
 | Theorem 1: Case 4 sub-claim D > 0 | `thm:vacuous` | `Case4DPos.lean` | `case4_D_pos` |
 | Theorem 1: Case 4 (both bind) | `thm:vacuous` | `Case4.lean` | `case4_iv_fails` |
 | Corollary 1: MFCQ direction | `cor:local-max` | `MFCQ.lean` | `mfcq_slackening_direction` |
+| Corollary 2: constraint slack direction | `cor:equilibrium` | `BoundaryDirection.lean` | `gS_directional_pos_at_eta_zero` |
+| Corollary 2: objective improving direction | `cor:equilibrium` | `BoundaryDirection.lean` | `phi_directional_pos_at_eta_zero` |
 | Corollary 2: η = 0 is improvable | `cor:equilibrium` | `BoundaryDirection.lean` | `eta_zero_improving_direction` |
+| CS pass-through: dp_S/dw_L | setup derivation | `CSDerivativeEquivalence.lean` | `dpS_formula` |
+| CS pass-through: dp_L/dw_L | setup derivation | `CSDerivativeEquivalence.lean` | `dpL_formula` |
+| CS computation identity | setup derivation | `CSDerivativeEquivalence.lean` | `dCS_dwL_identity` |
+| CS derivative: forward direction | setup derivation | `CSDerivativeEquivalence.lean` | `cs_pos_of_iv12` |
+| CS derivative: reverse direction | setup derivation | `CSDerivativeEquivalence.lean` | `iv12_of_cs_pos` |
 | CS derivative ≡ IV (12) | setup derivation | `CSDerivativeEquivalence.lean` | `cs_derivative_iff_iv12` |
+| CS equivalence: yS > 0 needed | setup derivation | `CSDerivativeEquivalence.lean` | `cs_equivalence_needs_yS_pos` |
 | Case exhaustion + unifier | `thm:vacuous` | `Vacuity.lean` | `active_set_exhaustion`, `iv12_fails_at_kkt_upper_bound` |
 | Multiplier identity (‡_S) | `thm:vacuous` | `Theorem1.lean` | `multiplier_S_identity` |
 | Multiplier identity (‡_L) | `thm:vacuous` | `Theorem1.lean` | `multiplier_L_identity` |
