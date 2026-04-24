@@ -11,3 +11,4 @@ import LeanWaterbed.Case4DPos
 import LeanWaterbed.MFCQ
 import LeanWaterbed.CSDerivativeEquivalence
 import LeanWaterbed.Vacuity
+import LeanWaterbed.Theorem1
