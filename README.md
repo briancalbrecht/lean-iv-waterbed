@@ -7,6 +7,10 @@ Every formal claim in the paper has been encoded as a Lean theorem and
 verified with no `sorry` axioms. Each theorem depends only on Lean's
 three standard axioms (`propext`, `Classical.choice`, `Quot.sound`).
 
+The main result is `theorem1_vacuous`: an end-to-end theorem that takes
+the full KKT system as hypotheses and proves IV condition (12) fails at
+every KKT point in the strict waterbed regime.
+
 ## Build
 
 Requires [elan](https://github.com/leanprover/elan) (Lean version
@@ -31,6 +35,9 @@ eta_zero_in_limit :
 
 smaller_root_feasibility :
   ∀ (ξ r : ℝ), 0 < r → r < 3 / 8 → ξ < 1 → ξ ^ 2 - 2 * ξ + 2 * r = 0 → 0 < ξ ∧ ξ < 1 / 2
+
+boundary_root :
+  (1 / 2) ^ 2 - 2 * (1 / 2) + 2 * (3 / 8) = 0
 
 boundary_unique :
   ∀ ξ < 1, ξ ^ 2 - 2 * ξ + 2 * (3 / 8) = 0 → ξ = 1 / 2
@@ -86,6 +93,32 @@ cs_derivative_iff_iv12 :
   ∀ (ξ yS : ℝ), 0 < yS →
     (-(2 - yS) / 3 + (1 + yS) * ξ / (6 * yS) > 0 ↔
      ξ > 2 * yS * (2 - yS) / (1 + yS))
+
+multiplier_S_identity :
+  ∀ (ξ η μ_S μ_L : ℝ),
+    1 / 2 + η - ξ - (1 + η - ξ) * μ_S - η * μ_L = 0 →
+      1 / 2 + ξ - η - ξ * μ_S - (1 + ξ - η) * μ_L = 0 →
+        μ_S * ((1 + η - ξ) * (1 + ξ - η) - ξ * η) = 1 / 2 - ξ / 2 + ξ * η - ξ ^ 2
+
+multiplier_L_identity :
+  ∀ (ξ η μ_S μ_L : ℝ),
+    1 / 2 + η - ξ - (1 + η - ξ) * μ_S - η * μ_L = 0 →
+      1 / 2 + ξ - η - ξ * μ_S - (1 + ξ - η) * μ_L = 0 →
+        μ_L * ((1 + η - ξ) * (1 + ξ - η) - ξ * η) = 1 / 2 - η / 2 + ξ * η - η ^ 2
+
+theorem1_vacuous :
+  ∀ (F t n_L : ℝ), F > 0 → t > 0 → n_L > 1 →
+    ∀ (ξ η μ_S μ_L β : ℝ), ξ > η → η ≥ 0 → 0 < (1 + η - ξ) / 2 →
+      μ_S ≥ 0 → μ_L ≥ 0 → β ≥ 0 →
+        F / t - ξ - ξ * η + ξ ^ 2 / 2 ≥ 0 →
+          F / (t * n_L) - η - ξ * η + η ^ 2 / 2 ≥ 0 →
+            1 / 2 + η - ξ - (1 + η - ξ) * μ_S - η * μ_L = 0 →
+              1 / 2 + ξ - η - ξ * μ_S - (1 + ξ - η) * μ_L + β = 0 →
+                μ_S * (F / t - ξ - ξ * η + ξ ^ 2 / 2) = 0 →
+                  μ_L * (F / (t * n_L) - η - ξ * η + η ^ 2 / 2) = 0 →
+                    β * η = 0 →
+                      ξ * (1 + (1 + η - ξ) / 2) ≤
+                        2 * ((1 + η - ξ) / 2) * (2 - (1 + η - ξ) / 2)
 ```
 
 </details>
@@ -96,6 +129,7 @@ cs_derivative_iff_iv12 :
 ```
 eta_zero_in_limit              [propext, Classical.choice, Quot.sound]
 smaller_root_feasibility       [propext, Classical.choice, Quot.sound]
+boundary_root                  [propext, Classical.choice, Quot.sound]
 boundary_unique                [propext, Classical.choice, Quot.sound]
 larger_root_infeasible         [propext, Classical.choice, Quot.sound]
 iv_condition_12_fails_in_limit [propext, Classical.choice, Quot.sound]
@@ -111,6 +145,9 @@ active_set_exhaustion           [propext, Classical.choice, Quot.sound]
 iv12_fails_at_kkt_upper_bound  [propext, Classical.choice, Quot.sound]
 eta_zero_improving_direction   [propext, Classical.choice, Quot.sound]
 cs_derivative_iff_iv12         [propext, Classical.choice, Quot.sound]
+multiplier_S_identity          [propext, Classical.choice, Quot.sound]
+multiplier_L_identity          [propext, Classical.choice, Quot.sound]
+theorem1_vacuous               [propext, Classical.choice, Quot.sound]
 ```
 
 No `sorryAx` anywhere. Every proof is complete.
@@ -120,7 +157,7 @@ No `sorryAx` anywhere. Every proof is complete.
 To reproduce locally:
 
 ```bash
-lake build    # builds everything; all 17 theorems must compile
+lake build    # builds everything; all 21 theorems must compile
 ```
 
 ## Coverage
@@ -145,17 +182,21 @@ the Waterbed Effect: A Comment on Inderst and Valletti (2011)."
 | Corollary 1: MFCQ direction | `cor:local-max` | `MFCQ.lean` | `mfcq_slackening_direction` |
 | Corollary 2: η = 0 is improvable | `cor:equilibrium` | `BoundaryDirection.lean` | `eta_zero_improving_direction` |
 | CS derivative ≡ IV (12) | setup derivation | `CSDerivativeEquivalence.lean` | `cs_derivative_iff_iv12` |
-| Case exhaustion + master | `thm:vacuous` | `Vacuity.lean` | `active_set_exhaustion`, `iv12_fails_at_kkt_upper_bound` |
+| Case exhaustion + unifier | `thm:vacuous` | `Vacuity.lean` | `active_set_exhaustion`, `iv12_fails_at_kkt_upper_bound` |
+| Multiplier identity (‡_S) | `thm:vacuous` | `Theorem1.lean` | `multiplier_S_identity` |
+| Multiplier identity (‡_L) | `thm:vacuous` | `Theorem1.lean` | `multiplier_L_identity` |
+| **Theorem 1 (end-to-end)** | `thm:vacuous` | `Theorem1.lean` | `theorem1_vacuous` |
 
 Each file also contains a **negative control** — an existential witness
 showing that dropping one hypothesis makes the conclusion fail. This
 confirms that the hypotheses are load-bearing, not decorative.
 
-The master theorem in `Vacuity.lean` verifies the case exhaustion:
-`active_set_exhaustion` shows that the four active-set configurations
-of {g_S, g_L} are exhaustive (via `by_cases` on two propositions),
-and `iv12_fails_at_kkt_upper_bound` unifies Cases 3 and 4 under
-their shared KKT upper bound.
+`Theorem1.lean` contains the end-to-end theorem: `theorem1_vacuous`
+takes the full KKT system (stationarity, complementary slackness,
+dual feasibility, primal feasibility) as hypotheses and proves IV
+condition (12) fails, composing all sub-case results. `Vacuity.lean`
+provides the intermediate `iv12_fails_at_kkt_upper_bound` that
+unifies Cases 3 and 4 under their shared KKT upper bound.
 
 ## What is not formalized
 
